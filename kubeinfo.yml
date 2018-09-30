@@ -1,0 +1,21 @@
+---
+- hosts: all 
+  vars: 
+
+  tasks:
+  - name: check the kubectl nodes
+    command: kubectl get nodes
+    register: kubenodes
+
+  - name: check the kubectl pods
+    command: kubectl get pods
+    register: kubepods
+
+  - name: nodes | Displaying nodes
+    debug:
+      msg: "{{ kubenodes }}"
+
+  - name: pods | Displaying pods
+    debug:
+      msg: "{{ kubepods }}"
+    
